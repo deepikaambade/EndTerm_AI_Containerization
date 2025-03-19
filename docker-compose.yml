@@ -1,0 +1,24 @@
+
+version: '3'
+
+services:
+  backend:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./api:/app/api
+      - ./my_model.h5:/app/my_model.h5
+    environment:
+      - FLASK_ENV=development
+
+  frontend:
+    image: node:16
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+    command: npm run dev
+    depends_on:
+      - backend

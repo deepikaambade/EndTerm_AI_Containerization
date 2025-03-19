@@ -1,69 +1,93 @@
-# Welcome to your Lovable project
 
-## Project info
+# Audio Noise Eraser
 
-**URL**: https://lovable.dev/projects/13e14821-d3c7-4c1e-929a-49d011cedb9f
+## Project Overview
 
-## How can I edit this code?
+Audio Noise Eraser is a web application for removing unwanted noise from audio files. It uses a deep neural network model to process WAV and MP3 files and produce cleaner, enhanced audio output.
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- Upload WAV or MP3 audio files
+- AI-powered noise reduction
+- Real-time audio visualization
+- Before/after comparison
+- Download processed audio
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/13e14821-d3c7-4c1e-929a-49d011cedb9f) and start prompting.
+## Technologies Used
 
-Changes made via Lovable will be committed automatically to this repo.
+### Frontend
+- React with TypeScript
+- Tailwind CSS for styling
+- ShadCN UI components
+- React Router for navigation
 
-**Use your preferred IDE**
+### Backend
+- Flask RESTful API
+- TensorFlow for the deep learning model
+- Librosa for audio processing
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Deployment
+- Docker and Docker Compose for containerization
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## Getting Started
 
-Follow these steps:
+### Prerequisites
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+- Node.js (v14+)
+- Python (v3.9+)
+- Docker and Docker Compose (optional)
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Running with Docker
 
-# Step 3: Install the necessary dependencies.
-npm i
+The easiest way to run the application is using Docker Compose:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+# Clone the repository
+git clone <repository-url>
+cd audio-noise-eraser
+
+# Start the application
+docker-compose up
+```
+
+The frontend will be available at http://localhost:8080 and the backend API at http://localhost:5000.
+
+### Manual Setup
+
+#### Backend
+
+```bash
+# Create a virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the Flask app
+cd api
+flask run
+```
+
+#### Frontend
+
+```bash
+# Install dependencies
+npm install
+
+# Run the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+## API Endpoints
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `POST /process` - Upload and process an audio file
+- `GET /health` - Health check endpoint
 
-**Use GitHub Codespaces**
+## Model Information
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The noise reduction model is a deep neural network trained to separate noise from audio signals. It uses spectral analysis and reconstruction techniques to identify and remove unwanted noise patterns while preserving the original audio quality.
 
-## What technologies are used for this project?
+## License
 
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/13e14821-d3c7-4c1e-929a-49d011cedb9f) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+This project is licensed under the MIT License - see the LICENSE file for details.
